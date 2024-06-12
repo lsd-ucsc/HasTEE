@@ -1,0 +1,3 @@
+[submodule "ghc-trusted"]
+	path = ghc-trusted
+	url = https://github.com/Abhiroop/ghc-trusted.git
