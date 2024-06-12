@@ -80,9 +80,9 @@ RUN /opt/sgx_linux_x64_sdk.bin --prefix /opt/intel
 
 
 ## Additional Dependencies
+RUN apt-get update
 RUN pip install jinja2
 RUN apt-get install -y libgmp3-dev
-RUN apt-get install autoconf
 
 
 ## Final
