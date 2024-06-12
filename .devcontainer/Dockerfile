@@ -83,8 +83,10 @@ RUN /opt/sgx_linux_x64_sdk.bin --prefix /opt/intel
 RUN apt-get update
 RUN pip install jinja2
 RUN apt-get install -y libgmp3-dev
-
-
+RUN apt-get install python3-sphinx
+RUN apt-get install vim -y
+RUN apt-get install autoconf -y
+RUN apt-get install libtool -y
 ## Final
 ENV DEBIAN_FRONTEND=
 ENV LANG=C.UTF-8
