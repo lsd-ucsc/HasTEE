@@ -1,3 +1,5 @@
+git config --global --add safe.directory /workspaces/HasTEE
+git config --global --add safe.directory /workspaces/HasTEE/ghc-trusted
 git submodule init
 git submodule update
 pip install autoconf
