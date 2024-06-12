@@ -1,3 +1,5 @@
+git submodule init
+git submodule update
 pip install autoconf
 cabal update
 openssl genrsa -out ssl/ca.key 2048
