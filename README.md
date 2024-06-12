@@ -45,3 +45,11 @@ cabal exec which EnclaveIFC-exe
 
 #### Client integrity check
 Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`-based Remote Attestation protocol.
+
+
+## Amended instructions
+1. Create Codespace
+2. run init.sh
+3. navigate to ghc-trusted directory
+4. type "make"
+5. wait for build to finish
