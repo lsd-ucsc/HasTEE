@@ -630,7 +630,7 @@ printDecimalValues bs = do
 sigVerification :: BL.ByteString -> IO (Maybe BL.ByteString)
 sigVerification sigmsg = do
   let (sig_m, m) = decode sigmsg :: (B.ByteString, B.ByteString)
-  pubK <- read <$> readFile "ssl/public.key"
+  pubK <- read <$> readFile "ssl/ca.key"
   if (verify (Nothing :: Maybe SHA512) pubK m sig_m)
   then return $ Just (BL.fromStrict m)
   else return $ Nothing

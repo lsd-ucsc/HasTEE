@@ -49,7 +49,13 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
 
 ## Amended instructions
 1. Create Codespace
-2. run init.sh
+2. ./init.sh
 3. navigate to ghc-trusted directory
 4. type "make"
 5. wait for build to finish
+6. navigate back to main HasTEE directory, then to cbits directory
+7. curl -o mbedtls-mbedtls-3.2.1 https://packages.gramineproject.io/distfiles/mbedtls-3.2.1.tar.gz
+8. tar xvzf mbedtls-mbedtls-3.2.1
+9. back to HasTEE directory
+10. cabal update
+11. cabal build

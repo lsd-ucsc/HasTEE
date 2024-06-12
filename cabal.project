@@ -1,2 +1,2 @@
 packages: ./*.cabal
-with-compiler: /workspace/HasTEE/ghc-trusted/inplace/bin/ghc-stage2
+with-compiler: /workspaces/HasTEE/ghc-trusted/inplace/bin/ghc-stage2
