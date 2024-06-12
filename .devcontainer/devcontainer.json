@@ -31,7 +31,8 @@
           "justusadam.language-haskell",
           "eriksik2.vscode-ghci",
           "jcanero.hoogle-vscode",
-          "GitHub.codespaces"
+          "GitHub.codespaces",
+          "ms-azuretools.vscode-docker"
         ]
       }
     }
