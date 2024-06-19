@@ -3,7 +3,7 @@
 
 A Haskell DSL for programming Trusted Execution Environments (TEEs). 
 
-See `app/Main.hs` and the `examples` directory for sample programs. To use examples, copy the contents over and change the module name in the code to "Main"
+See `app/Main.hs` and the `examples` directory for sample programs. To use examples, copy the contents to Main.hs and change the module name in the code to "Main"
 
 
 ### Papers on HasTEE⁺:
