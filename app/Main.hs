@@ -5,6 +5,7 @@ module Main where
 
 import Control.Monad.IO.Class(liftIO)
 
+import GHC
 import DynFlags
 
 import App
