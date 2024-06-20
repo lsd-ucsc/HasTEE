@@ -5,10 +5,6 @@ module Main where
 
 import Control.Monad.IO.Class(liftIO)
 
-import GHC
-import GHC.Paths (libdir)
-import DynFlags (defaultLogAction)
-
 import App
 import DCLabel
 #ifdef ENCLAVE
@@ -17,12 +13,15 @@ import Enclave
 import Client
 #endif
 
+import GHC
+import GHC.Paths ( libdir )
+import DynFlags ( defaultFatalMessager, defaultFlushOut )
 
 main =
-  defaultErrorHandler defaultLogAction $ do
-    runGhc (Just libdir) $ do
-      dflags <- getSessionDynFlags
-      setSessionDynFlags dflags
-      target <- guessTarget "test_main.hs" Nothing
-      setTargets [target]
-      load LoadAllTargets
+    defaultErrorHandler defaultFatalMessager defaultFlushOut $ do
+      runGhc (Just libdir) $ do
+        dflags <- getSessionDynFlags
+        setSessionDynFlags dflags
+        target <- guessTarget "test_main.hs" Nothing
+        setTargets [target]
+        load LoadAllTargets
