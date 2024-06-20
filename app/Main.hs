@@ -6,6 +6,7 @@ module Main where
 import Control.Monad.IO.Class(liftIO)
 
 import GHC
+import GHC.Paths
 import DynFlags
 
 import App

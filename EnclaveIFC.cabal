@@ -55,6 +55,7 @@ library
     , network-simple
     , transformers
     , ghc
+    , ghc-paths
   default-language: Haskell2010
   if (flag(enclave))
     cpp-options: -DENCLAVE
@@ -184,6 +185,7 @@ executable EnclaveIFC-exe
     , network-simple
     , transformers
     , ghc
+    , ghc-paths
   default-language: Haskell2010
   if (flag(enclave))
     cpp-options: -DENCLAVE
