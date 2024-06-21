@@ -5,7 +5,9 @@ module Main where
 
 import Control.Monad.IO.Class(liftIO)
 
-import DynFlags
+import GHC
+import GHC.Paths ( libdir )
+import DynFlags ( defaultFatalMessager, defaultFlushOut )
 
 import App
 import DCLabel
@@ -25,7 +27,12 @@ pwdLabel = "Alice" %% "Alice"
 
 pwdChecker :: EnclaveDC (DCLabeled String) -> String -> EnclaveDC Bool
 pwdChecker pwd guess = do
-  liftIO $ putStrLn "Testing Here"
+  liftIO $ runGhc (Just libdir) $ do
+    dflags <- getSessionDynFlags
+    setSessionDynFlags dflags
+    target <- guessTarget "test_main.hs" Nothing
+    setTargets [target]
+    load LoadAllTargets
   l_pwd <- pwd
   priv  <- getPrivilege
   p     <- unlabelP priv l_pwd
