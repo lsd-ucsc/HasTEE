@@ -25,6 +25,7 @@ pwdLabel = "Alice" %% "Alice"
 
 pwdChecker :: EnclaveDC (DCLabeled String) -> String -> EnclaveDC Bool
 pwdChecker pwd guess = do
+  liftIO $ putStrLn "Testing Here"
   l_pwd <- pwd
   priv  <- getPrivilege
   p     <- unlabelP priv l_pwd
@@ -45,6 +46,7 @@ ifctest = do
   let priv = toCNF "Alice"
   efunc <- inEnclave (dcDefaultState priv) $ pwdChecker pwd
   runClient (client (API efunc))
+
 
 main :: IO ()
 main = do
