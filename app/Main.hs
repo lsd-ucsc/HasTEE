@@ -48,6 +48,7 @@ hashFunc :: IO()
 hashFunc = do
   content <- BS.readFile "test_main.hs"
   let hashedSrc = SHA256.hash content
+  
   BS.putStr hashedSrc
   
 
