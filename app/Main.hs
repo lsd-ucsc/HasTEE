@@ -7,7 +7,9 @@ import Control.Monad.IO.Class(liftIO)
 
 import GHC
 import GHC.Paths ( libdir )
-import DynFlags ( defaultFatalMessager, defaultFlushOut )
+import Crypto.Hash.SHA256 as SHA256
+import Data.ByteString as BS
+--import DynFlags ( defaultFatalMessager, defaultFlushOut )
 
 import App
 import DCLabel
@@ -27,9 +29,9 @@ pwdLabel = "Alice" %% "Alice"
 
 pwdChecker :: EnclaveDC (DCLabeled String) -> String -> EnclaveDC Bool
 pwdChecker pwd guess = do
-  liftIO $ runGhc (Just libdir) $ do
+  _ <- liftIO $ runGhc (Just libdir) $ do
     dflags <- getSessionDynFlags
-    setSessionDynFlags dflags
+    _ <- setSessionDynFlags dflags
     target <- guessTarget "test_main.hs" Nothing
     setTargets [target]
     load LoadAllTargets
@@ -40,12 +42,22 @@ pwdChecker pwd guess = do
   then return True
   else return False
 
+
+
+hashFunc :: IO()
+hashFunc = do
+  content <- BS.readFile "test_main.hs"
+  let hashedSrc = SHA256.hash content
+  BS.putStr hashedSrc
+  
+
+
 client :: API -> Client "client" ()
 client api = do
-  liftIO $ putStrLn "Enter your password:"
-  userInput <- liftIO getLine
+  liftIO $ Prelude.putStrLn "Enter your password:"
+  userInput <- liftIO Prelude.getLine
   res <- gatewayRA ((checkpwd api) <@> userInput)
-  liftIO $ putStrLn ("Login returned " ++ show res)
+  liftIO $ Prelude.putStrLn ("Login returned " ++ show res)
 
 ifctest :: App Done
 ifctest = do
@@ -57,5 +69,6 @@ ifctest = do
 
 main :: IO ()
 main = do
+  hashFunc
   res <- runAppRA "client" ifctest
   return $ res `seq` ()
