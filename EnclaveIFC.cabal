@@ -19,6 +19,7 @@ extra-source-files:
     README.md
     CHANGELOG.md
 
+
 source-repository head
   type: git
   location: https://github.com/Abhiroop/EnclaveIFC
@@ -34,6 +35,12 @@ flag integrity-check
 library
   c-sources: cbits/client.c
              cbits/server.c
+  ghc-options: 
+      -Wall -O2 -static -threaded -g -fPIC -fllvm
+  cc-options: 
+      -static
+  ld-options:
+      -static -pthread
   exposed-modules:
       App
       Client

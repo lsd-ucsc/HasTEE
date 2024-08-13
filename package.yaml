@@ -37,6 +37,17 @@ ghc-options:
 - -Wmissing-home-modules
 - -Wpartial-fields
 - -Wredundant-constraints
+- -O2
+- -static
+- -threaded
+
+cc-options:
+- -static
+
+ld-options: 
+- -static
+- -pthread
+
 
 # library doesn't require the flag
 library:
