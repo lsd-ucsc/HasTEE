@@ -36,11 +36,11 @@ library
   c-sources: cbits/client.c
              cbits/server.c
   ghc-options: 
-      -Wall -O2 -static -threaded -g -fPIC -fllvm
+      -Wall -O2 -static -g 
   cc-options: 
       -static
   ld-options:
-      -static -pthread
+      -static
   exposed-modules:
       App
       Client
