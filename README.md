@@ -63,3 +63,9 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
 12. install musl
 13. configure it
 14. CC="musl-gcc -static"
+
+# General Notes
+1. download everything
+2. set CC for musl - CC="/usr/local/musl/bin/musl-gcc"
+3. build ghc runtime with musl - ./configure CC="/usr/local/musl/bin/musl-gcc"
+4. build hastee with musl statically
