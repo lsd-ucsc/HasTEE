@@ -62,3 +62,4 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
 11. cabal build
 12. install musl
 13. configure it
+14. CC="musl-gcc -static"

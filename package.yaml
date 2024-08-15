@@ -38,6 +38,11 @@ ghc-options:
 - -Wpartial-fields
 - -Wredundant-constraints
 - -static
+- -optl-static
+- -optc-fPIC
+- -optc-musl-gcc
+- -optl-fuse-ld=gold 
+- -optl-no-pie
 
 cc-options:
 - -static
