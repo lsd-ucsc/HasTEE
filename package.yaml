@@ -43,6 +43,7 @@ ghc-options:
 - -optc-musl-gcc
 - -optl-fuse-ld=gold 
 - -optl-no-pie
+- -optl-nostdlib
 
 cc-options:
 - -static

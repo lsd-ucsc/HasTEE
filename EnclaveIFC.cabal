@@ -36,7 +36,7 @@ library
   c-sources: cbits/client.c
              cbits/server.c
   ghc-options: 
-      -Wall -O2 -static -g -optc-fPIC -optl-static -optl-pthread -optl-fuse-ld=gold -optl-no-pie
+      -Wall -O2 -static -g -optc-fPIC -optl-static -optl-pthread -optl-fuse-ld=gold -optl-no-pie -optl-nostdlib
   cc-options: 
       -static
   ld-options:
