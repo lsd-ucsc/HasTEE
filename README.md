@@ -60,3 +60,5 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
 9. back to HasTEE directory
 10. cabal update
 11. cabal build
+12. install musl
+13. configure it
