@@ -67,5 +67,5 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
 # General Notes
 1. download everything
 2. set CC for musl - CC="/usr/local/musl/bin/musl-gcc"
-3. build ghc runtime with musl - ./configure CC="/usr/local/musl/bin/musl-gcc"
+3. build ghc runtime with musl - ./configure CC="/usr/local/musl/bin/musl-gcc" --with-curses-libraries="/usr/share/doc/libncurses5-dev"
 4. build hastee with musl statically
