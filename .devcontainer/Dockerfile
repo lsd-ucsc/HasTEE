@@ -68,14 +68,7 @@ ARG SGX_SDK_VER=${LINUX_SGX_VER}.100.2
 # RUN /opt/sgx_linux_x64_sdk.bin --prefix /opt/intel
 
 
-# ## Additional Dependencies
-# RUN apk update
-# RUN pip install jinja2
-# RUN apk add -y libgmp3-dev
-# RUN apk add python3-sphinx -y
-# RUN apk add vim -y
-# RUN apk add autoconf -y
-# RUN apk add libtool -y
+`
 
 ## Final
 ENV DEBIAN_FRONTEND=
