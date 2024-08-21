@@ -1,18 +1,12 @@
-FROM ubuntu:22.04
+FROM alpine:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 ############################### Install packages ###############################
-RUN apt-get update -y && \
-	apt-get install -y \
-		apt-utils \
-		lsb-release
+RUN apk update -y
 
-RUN apt-get update -y && \
-	apt-get upgrade -y
 
-RUN apt-get update -y && \
-	apt-get install -y \
+RUN apk add -y \
 		nano \
 		less \
 		unzip \
@@ -41,8 +35,7 @@ RUN ghcup -v install cabal --isolate /usr/local/bin --force ${CABAL}
 
 
 # SSH Server
-RUN apt-get update -y && \
-	apt-get install -y \
+RUN apk add -y \
 		openssh-server
 RUN rm /etc/ssh/ssh_host_*
 
@@ -60,8 +53,7 @@ RUN curl \
 
 RUN tar -xzf /opt/sgx_debian_local_repo.tgz -C /opt
 RUN echo 'deb [arch=amd64 trusted=yes] file:/opt/sgx_debian_local_repo/ jammy main' > /etc/apt/sources.list.d/intel-sgx.list
-RUN apt-get update -y
-RUN apt install -y \
+RUN apk add -y \
 	libsgx-enclave-common \
 	libsgx-enclave-common-dbgsym \
 	libsgx-urts \
@@ -80,13 +72,13 @@ RUN /opt/sgx_linux_x64_sdk.bin --prefix /opt/intel
 
 
 ## Additional Dependencies
-RUN apt-get update
+RUN apk update
 RUN pip install jinja2
-RUN apt-get install -y libgmp3-dev
-RUN apt-get install python3-sphinx -y
-RUN apt-get install vim -y
-RUN apt-get install autoconf -y
-RUN apt-get install libtool -y
+RUN apk add -y libgmp3-dev
+RUN apk add python3-sphinx -y
+RUN apk add vim -y
+RUN apk add autoconf -y
+RUN apk add libtool -y
 
 ## Final
 ENV DEBIAN_FRONTEND=
