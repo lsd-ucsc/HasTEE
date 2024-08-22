@@ -70,3 +70,8 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
 16. https://github.com/bazelbuild/bazel-gazelle?tab=readme-ov-file#setup
 17. https://github.com/tweag/gazelle_cabal?tab=readme-ov-file#configuration 
 
+## Need to Do
+- Get gazelle_cabal working to convert cabal to Bazel
+- Get GHC to build statically using Bazel
+- Get HasTEE to build statically using static GHC
+- more to come later
