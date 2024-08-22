@@ -25,7 +25,13 @@ RUN apt-get update -y && \
 		python3=3.10.6-1~22.04 \
 		python3-venv=3.10.6-1~22.04 \
 		python3-pip=22.0.2+dfsg-1ubuntu0.4 \
-        clang
+        clang \
+		build-essential \
+		libffi-dev \
+		libgmp-dev \
+		libtinfo5 \
+		libtinfo-dev \
+		openjdk-11-jdk
 
         
 # install ghcup

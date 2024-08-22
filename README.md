@@ -60,12 +60,9 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
 9. back to HasTEE directory
 10. cabal update
 11. cabal build
-12. install musl
-13. configure it
-14. CC="musl-gcc -static"
-
-# General Notes
-1. download everything
-2. set CC for musl - CC="/usr/local/musl/bin/musl-gcc"
-3. build ghc runtime with musl - ./configure CC="/usr/local/musl/bin/musl-gcc" --with-curses-libraries="/usr/share/doc/libncurses5-dev"
-4. build hastee with musl statically
+12. apt install apt-transport-https curl gnupg -y
+    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
+    mv bazel-archive-keyring.gpg /usr/share/keyrings
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
+13. apt update && apt install bazel
+14. git clone https://github.com/tweag/rules_haskell/
