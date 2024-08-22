@@ -66,3 +66,7 @@ Enabled with `-fintegrity-check`. Disabled by default. Works with the `mbed-tls`
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
 13. apt update && apt install bazel
 14. git clone https://github.com/tweag/rules_haskell/
+15. curl https://haskell.build/start | sh
+16. https://github.com/bazelbuild/bazel-gazelle?tab=readme-ov-file#setup
+17. https://github.com/tweag/gazelle_cabal?tab=readme-ov-file#configuration 
+

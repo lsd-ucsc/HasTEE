@@ -1,0 +1,12 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# Load rules_haskell rules.
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_binary",
+    "haskell_library",
+    "haskell_toolchain_library",
+)
+
+# gazelle:prefix github.com/example/project
+gazelle(name = "gazelle")
