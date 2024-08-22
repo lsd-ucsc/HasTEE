@@ -33,19 +33,6 @@ load(
     "stack_snapshot"
 )
 
-stack_snapshot(
-    name = "stackage",
-    extra_deps = {"zlib": ["@zlib.dev//:zlib"]},
-    packages = ["zlib"],
-
-    # LTS snapshot published for ghc-9.2.8 (default version used by rules_haskell)
-    snapshot = "lts-20.26",
-
-    # This uses an unpinned version of stack_snapshot, meaning that stack is invoked on every build.
-    # To switch to pinned stackage dependencies, run `bazel run @stackage-unpinned//:pin` and
-    # uncomment the following line.
-    # stack_snapshot_json = "//:stackage_snapshot.json",
-)
 
 # Download a GHC binary distribution from haskell.org and register it as a toolchain.
 rules_haskell_toolchains(
@@ -84,14 +71,39 @@ http_archive(
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 
-############################################################
-# Define your own dependencies here using go_repository.
-# Else, dependencies declared by rules_go/gazelle will be used.
-# The first declaration of an external repository "wins".
-############################################################
+
 
 go_rules_dependencies()
 
 go_register_toolchains(version = "1.20.5")
 
 gazelle_dependencies()
+
+http_archive(
+    name = "io_tweag_gazelle_cabal",
+    strip_prefix = "gazelle_cabal-main",
+    url = "https://github.com/tweag/gazelle_cabal/archive/main.zip",
+)
+
+load("@rules_haskell//haskell:cabal.bzl", "stack_snapshot")
+load("@io_tweag_gazelle_cabal//:defs.bzl", "gazelle_cabal_dependencies")
+gazelle_cabal_dependencies()
+
+stack_snapshot(
+    name = "stackage",
+    packages = [
+        "json", # keep
+        "path", # keep
+        "path-io", # keep
+    ],
+    # Most snapshots of your choice might do
+    snapshot = "lts-18.28",
+)
+
+go_repository(
+    name = "org_golang_x_xerrors",
+    importpath = "golang.org/x/xerrors",
+    sum = "h1:go1bK/D/BFZV2I8cIQd1NKEZ+0owSTG1fDTci4IqFcE=",
+    version = "v0.0.0-20200804184101-5ec99f83aff1",
+)
+
