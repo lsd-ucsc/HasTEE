@@ -37,20 +37,6 @@ ghc-options:
 - -Wmissing-home-modules
 - -Wpartial-fields
 - -Wredundant-constraints
-- -static
-- -optl-static
-- -optc-fPIC
-- -optc-musl-gcc
-- -optl-fuse-ld=gold 
-- -optl-no-pie
-- -optl-nostdlib
-
-cc-options:
-- -static
-
-ld-options: 
-- -static
-
 
 # library doesn't require the flag
 library:
